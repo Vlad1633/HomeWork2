@@ -95,17 +95,19 @@ public class MyLinkedList<E> {
 
     public boolean remove(E element){
         Node node = head;
-        Node deleteNode = new Node(element);
-        while(node.next != deleteNode){
+        Node previous = null;
+        while(node.element != element){
+            previous = node;
             node = node.next;
+
         }
-        if(node.next!=deleteNode){
-            return false;
+        if(head.element == element){
+            head = node.next;
+        }else {
+            previous.next = node.next;
         }
-        else{
-            node.next = node.next.next;
-            size--;
-        }
+        size--;
+
 
         return true;
     }
